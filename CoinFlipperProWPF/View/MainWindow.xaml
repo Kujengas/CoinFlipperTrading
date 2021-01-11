@@ -1,0 +1,182 @@
+﻿<Window xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CoinFlipperProWPF.MainWindow"
+        Title="MainWindow" Height="700" Width="1280" MinHeight="700" MinWidth="1280">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            
+         
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding SummaryText}" >
+            </TextBlock>
+            <TabControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                <TabItem Header="Charts"/>
+                <TabItem Header="Ticker">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <!-- <RowDefinition Height="200px"></RowDefinition>-->
+                        </Grid.RowDefinitions>
+                        <DataGrid  ItemsSource="{Binding Ticker}" Grid.Row="0"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="By Minute">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="200px"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DataGrid ItemsSource="{Binding Macd}" Grid.Row="0"  />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="By Interval Slow MACD">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="200px"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DataGrid ItemsSource="{Binding MacdIntervalSlow}" Grid.Row="0"  />
+
+
+
+                      
+                            <chartingToolkit:Chart  Width= "auto" Height="auto" HorizontalAlignment="Stretch" Name="MyChart"  Grid.Row="1">
+                            <chartingToolkit:Chart.LegendStyle>
+                                <Style TargetType="Control">
+                                    <Setter Property="Width" Value="0"/>
+                                    <Setter Property="Height" Value="0"/>
+                                </Style>
+                                
+                            </chartingToolkit:Chart.LegendStyle>
+                            
+                                <chartingToolkit:ColumnSeries 
+                        Name="theColumnSeries" ItemsSource="{Binding MacdIntervalSlow,  Mode=OneWay}"
+                         
+                        IndependentValueBinding="{Binding Path=IntervalDate}"                
+                        DependentValueBinding="{Binding Path=Hist}"
+                        Margin="0" 
+                        >
+                            </chartingToolkit:ColumnSeries>
+
+                            <chartingToolkit:Chart.Axes>
+                                    <chartingToolkit:LinearAxis 
+                            Orientation="Y" ShowGridLines="True"   />
+                                <chartingToolkit:CategoryAxis   Visibility="Collapsed"  Name="chartCategoryAxis"  >
+
+
+                                </chartingToolkit:CategoryAxis>
+                            </chartingToolkit:Chart.Axes>
+                            </chartingToolkit:Chart>
+
+
+                      <!--      <telerik:RadChart  Grid.Row="1"   >
+
+                            <telerik:RadChart.DefaultView>
+                                <telerik:ChartDefaultView>
+                                   
+
+                                    <telerik:ChartDefaultView.ChartArea>
+                                        <telerik:ChartArea   LabelFormatBehavior="None">
+                                         
+                                        </telerik:ChartArea>
+                                    </telerik:ChartDefaultView.ChartArea>
+                                </telerik:ChartDefaultView>
+                            </telerik:RadChart.DefaultView>
+                            <telerik:RadChart.AnimationSettings>
+                                <telerik:AnimationSettings ItemAnimationDuration="00:00:00"  ItemDelay="00:00:00.0" >
+
+                                </telerik:AnimationSettings>
+                            </telerik:RadChart.AnimationSettings>
+                          
+                              
+                               
+                            <telerik:RadChart.SeriesMappings >
+
+                                <telerik:SeriesMapping  ItemsSource="{Binding MacdIntervalSlow,  Mode=OneWay}"      >
+                                   
+                                    <telerik:SeriesMapping.ItemMappings>
+                                        <telerik:ItemMapping DataPointMember="XCategory"   FieldName="IntervalTime" ></telerik:ItemMapping>
+                                        <telerik:ItemMapping DataPointMember="YValue"  FieldName="Hist"></telerik:ItemMapping>
+                                    </telerik:SeriesMapping.ItemMappings>
+                                </telerik:SeriesMapping>
+                            </telerik:RadChart.SeriesMappings>
+                           
+                        </telerik:RadChart>-->
+                    </Grid>
+                </TabItem>
+                <TabItem Header="By Interval Fast MACD">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="200px"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DataGrid ItemsSource="{Binding MacdIntervalFast}" Grid.Row="0"  />
+
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        <Grid Grid.Column="1"  Width="360">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="105"/>
+
+                <RowDefinition Height="Auto"/>
+
+
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Errors}"/>
+            <DockPanel  Grid.Row="1" Grid.Column="0">
+                <Button DockPanel.Dock="Left" Width="180" Command="{Binding StartTimerCommand}" IsEnabled="{Binding IsStartButtonEnabled}">Connect</Button>
+                <Button DockPanel.Dock="Right" Width="180" Command="{Binding StopTimerCommand}" IsEnabled="{Binding IsStopButtonEnabled}">Disconnect</Button>
+            </DockPanel>
+
+            <Grid Grid.Row="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <CheckBox Grid.Row="0" Grid.Column="0" IsChecked="{Binding IsAutoRefreshGridEnabled}">Auto Refresh Grid</CheckBox>
+                <CheckBox  Grid.Row="0" Grid.Column="1" IsEnabled="{Binding IsAlgoOnButtonEnabled}" Command="{Binding ToggleLiveApiCommand}" CommandParameter="{Binding IsChecked , RelativeSource={RelativeSource Self}, Mode=OneWay}"   IsChecked="{Binding IsLiveApi}">Use Live Api</CheckBox>
+                <DockPanel  Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">
+                    <Button DockPanel.Dock="Left" Width="180" Command="{Binding TurnAlgoOnCommand}"  IsEnabled="{Binding IsAlgoOnButtonEnabled}">Turn Algo On</Button>
+                    <Button DockPanel.Dock="Right" Width="180" Command="{Binding TurnAlgoOffCommand}"  IsEnabled="{Binding IsAlgoOffButtonEnabled}" >Turn Algo Off</Button>
+                </DockPanel>
+                <Button  Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding ResetAlgoConfigCommand}" >Reset</Button>
+            </Grid>
+
+
+
+            <TabControl Grid.Row="3" Grid.Column="0">
+                <TabItem Header="Algo Configuration">
+                    <telerik:RadPropertyGrid  AutoGeneratePropertyDefinitions="True"  IsEnabled="{Binding IsAlgoOnButtonEnabled}" Item="{Binding Fdm.algoConfig}" >
+                    </telerik:RadPropertyGrid>
+                </TabItem>
+                <TabItem Header="Manual Trading">
+
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinFlipperPro.Model", "CoinFlipperPro.Model\CoinFlipperPro.Model.csproj", "{0E95BCDE-7E42-4674-A174-C2580C0CEA28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinFlipperPro.Trading", "CoinFlipperPro.Trading\CoinFlipperPro.Trading.csproj", "{96B1B91C-75A3-47F8-9BA9-768D6D3C72D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinFlipperPro.Api", "CoinFlipperPro.Api\CoinFlipperPro.Api.csproj", "{4E0E26AE-CF24-4B8D-BB93-BCED93AFC159}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinFlipperPro.DataAccess", "CoinFlipperPro.DataAccess\CoinFlipperPro.DataAccess.csproj", "{A63619D1-D95D-4E52-B832-23C0322F0776}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinFlipperProWPF", "CoinFlipperProWPF\CoinFlipperProWPF.csproj", "{ABD8928D-64D1-452F-A7F0-E7C595BAD007}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E95BCDE-7E42-4674-A174-C2580C0CEA28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E95BCDE-7E42-4674-A174-C2580C0CEA28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E95BCDE-7E42-4674-A174-C2580C0CEA28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E95BCDE-7E42-4674-A174-C2580C0CEA28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96B1B91C-75A3-47F8-9BA9-768D6D3C72D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96B1B91C-75A3-47F8-9BA9-768D6D3C72D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96B1B91C-75A3-47F8-9BA9-768D6D3C72D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96B1B91C-75A3-47F8-9BA9-768D6D3C72D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E0E26AE-CF24-4B8D-BB93-BCED93AFC159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E0E26AE-CF24-4B8D-BB93-BCED93AFC159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E0E26AE-CF24-4B8D-BB93-BCED93AFC159}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E0E26AE-CF24-4B8D-BB93-BCED93AFC159}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A63619D1-D95D-4E52-B832-23C0322F0776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A63619D1-D95D-4E52-B832-23C0322F0776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A63619D1-D95D-4E52-B832-23C0322F0776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A63619D1-D95D-4E52-B832-23C0322F0776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABD8928D-64D1-452F-A7F0-E7C595BAD007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABD8928D-64D1-452F-A7F0-E7C595BAD007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABD8928D-64D1-452F-A7F0-E7C595BAD007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABD8928D-64D1-452F-A7F0-E7C595BAD007}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
